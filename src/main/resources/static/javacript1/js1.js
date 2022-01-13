@@ -9,8 +9,8 @@ function heiVerden2() {
 }
 
 //Oppgave 3
-function inputChange(verdi) {
-    document.write(verdi);
+function inputChange(inputVerdi) {
+    document.write(inputVerdi);
 }
 
 //Oppgave 4
@@ -19,6 +19,37 @@ function printAlert(verdi) {
 }
 
 //Oppgave 5
-function logAlert(verdi) {
+function writeConsole(verdi) {
     console.log(verdi);
+}
+
+<!--------------------EKSTRAOPPGAVER-------------------->
+
+//Oppgave 6
+function inputChange2(inputVerdi) {
+    document.write(inputVerdi.fontcolor("blue"));
+}
+
+//Oppgave 7
+function printAlert2(verdi) {
+    alert(verdi.toUpperCase());
+}
+
+//Oppgave 8
+function writeConsole2() {
+    console.log(1);
+}
+
+//Oppgave 9
+let antall = 0;
+function writeConsole3() {
+    antall++;
+    console.log(antall);
+}
+
+//Oppgave 10
+let antall2 = 0;
+function writeConsole4() {
+    antall2++;
+    console.log("Du har trykket på knappen " + antall2 + " ganger.");
 }
