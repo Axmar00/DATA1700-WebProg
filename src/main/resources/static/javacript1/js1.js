@@ -28,6 +28,8 @@ function writeConsole(verdi) {
 //Oppgave 6
 function inputChange2(inputVerdi) {
     document.write(inputVerdi.fontcolor("blue"));
+    //Alternativ måte:
+    document.write("<p style='color: blue;'>" + inputVerdi + "</p>");
 }
 
 //Oppgave 7
