@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Javascript 3 - Ukesoppgaver</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="js3.js"></script>
+</head>
+<body>
+<h1>Javascript 3 - Ukesoppgaver</h1>
+
+<div id="oppgave1">
+    <h2>Oppgave 1</h2>
+    <table>
+        <tr>
+            <td>Skriv inn navn<br><input type="text" placeholder="Navn" id="inputNavn"></td>
+            <td>Skriv inn alder<br><input type="number" placeholder="Alder" id="inputAlder"></td>
+        </tr>
+        <tr>
+            <td><button onclick="visInfo()">Trykk på meg</button></td>
+        </tr>
+    </table>
+</div>
+<br><br>
+
+<h2>Oppgave 2</h2>
+<table>
+    <tr>
+        <td>Celsius:<br><input type="number" id="celsius" onchange="celsiusTilFarenheit(this.value)"></td>
+        <td>Farenheit:<br><input type="number" id="farenheit" onchange="farenheitTilCelsius(this.value)"></td>
+    </tr>
+</table>
+<br><br>
+
+<h2>Oppgave 3</h2>
+<table>
+    <tr>
+        <td>
+            Tall 1<br>
+            <input type="number" placeholder="Tall 1" id="tall1">
+        </td>
+        <td>
+            Tall 2<br>
+            <input type="number" placeholder="Tall 2" id="tall2"> =
+        </td>
+        <td><br><label id="resultat"></label></td>
+    </tr>
+    <tr>
+        <td>
+            <button onclick="pluss()">+</button>
+            <button onclick="minus()">-</button>
+            <button onclick="gange()">*</button>
+            <button onclick="dele()">/</button>
+        </td>
+        <td>
+            <label id="feilTall" style="color: red"></label>
+        </td>
+    </tr>
+</table>
+</body>
+</html>
