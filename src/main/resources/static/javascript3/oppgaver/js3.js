@@ -2,7 +2,7 @@
 function visInfo() {
     let navn = $("#inputNavn").val();
     let alder = $("#inputAlder").val();
-    if(alder < 1 || navn.trim == 0) {
+    if(alder < 1 || navn == 0) {
         alert("Fyll ut alle feltene");
         return;
     }
@@ -80,3 +80,131 @@ function validerFelt() {
 }
 
 //Oppgave 4
+const personer = [];
+let ut = "";
+let ut2 = "";
+
+function registrer() {
+    let fornavnOK = validerFornavn();
+    let adresseOK = validerAdresse();
+    let telefonnrOK = validerTelefonnr();
+    let OK = fornavnOK && adresseOK && telefonnrOK;
+
+
+    if(OK) {
+        let fornavn = $("#fornavn").val();
+        let adresse = $("#adresse").val();
+        let tlfnr = $("#telefonNr").val();
+        const person = {
+            fornavn: fornavn,
+            adresse: adresse,
+            telefonNr: tlfnr
+        };
+        personer.push(person);
+        $("#fornavn").val("");
+        $("#adresse").val("");
+        $("#telefonNr").val("");
+        alert(fornavn + " registrert");
+    }
+}
+
+function visPersonRegister() {
+    //Print ut usortert array
+    printSortedArray()
+}
+
+function printSortedArray() {
+    let personRegister = $("#personRegister");
+    sortByName(personer);
+
+    ut = "<h2> Sortert array </h2>" +
+        "<table><tr>" +
+        "<th>Fornavn</th><th>Adresse</th><th>Telefon</th>" +
+        "</tr>";
+    //Går gjennom hele personarrayet
+    for(let i in personer) {
+        if (i % 2 === 0) {
+            ut += "<tr style='font-weight: bold'>" +
+                "<td>" + personer[i].fornavn + "</td>" + "<td>" + personer[i].adresse + "</td>" + "<td>" + personer[i].telefonNr + "</td>" +
+                "</tr>";
+        } else {
+            ut += "<tr>" +
+                "<td>" + personer[i].fornavn + "</td>" + "<td>" + personer[i].adresse + "</td>" + "<td>" + personer[i].telefonNr + "</td>" +
+                "</tr>";
+        }
+    }
+    ut += "</table><br><br><br>";
+    personRegister.html(ut);
+}
+
+function sortByName(array) {
+    array.sort( (pers1,pers2) => {
+            let navn1 = pers1.fornavn.toLowerCase();
+            let navn2 = pers2.fornavn.toLowerCase();
+
+            if(navn1 > navn2) {
+                return 1;
+            }
+            else if(navn1 < navn2) {
+                return -1;
+            }
+            else {
+                return 0;
+            }
+        }
+    );
+}
+
+function validerFornavn() {
+    let fornavn = $("#fornavn").val();
+    let feilFornavn = $("#feilFornavn");
+    const regexp = /^[a-zA-ZæøåÆØÅ\.\ \-]{2,15}$/;
+    const ok = regexp.test(fornavn);
+
+    if(fornavn == 0) {
+        feilFornavn.html("Må skrive noe i fornavn");
+        return false;
+    }
+    else if(!ok) {
+        feilFornavn.html("Kun 2-15 bokstaver! Tall og spesialtegn ikke gyldig");
+        return false;
+    }
+    else {
+        feilFornavn.html("");
+        return true;
+    }
+}
+
+function validerAdresse() {
+    let adresse = $("#adresse").val();
+    let feilAdresse = $("#feilAdresse");
+
+    if(adresse == 0) {
+        feilAdresse.html("Må skrive noe i adresse");
+        return false;
+    }
+    else {
+        feilAdresse.html("");
+        return true;
+    }
+}
+
+function validerTelefonnr() {
+    let telefonNr = $("#telefonNr").val();
+    let feilTlfnr = $("#feilTlfnr");
+    const regexp = /^[0-9]{8}$/;
+    const ok = regexp.test(telefonNr);
+
+    if(telefonNr == 0) {
+        feilTlfnr.html("Må skrive noe i telefonnummer");
+        return false
+    }
+    else if(!ok) {
+        feilTlfnr.html("Kun 8 tall! Bokstaver ikke gyldig!");
+        return false;
+    }
+    else {
+        feilTlfnr.html("");
+        return true;
+    }
+}

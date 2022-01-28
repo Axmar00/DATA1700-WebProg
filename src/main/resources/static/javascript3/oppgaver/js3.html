@@ -5,6 +5,14 @@
     <title>Javascript 3 - Ukesoppgaver</title>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="js3.js"></script>
+    <style>
+        input {
+            width: 10em;
+        }
+        td,th {
+            padding: .5em;
+        }
+    </style>
 </head>
 <body>
 <h1>Javascript 3 - Ukesoppgaver</h1>
@@ -57,5 +65,26 @@
         </td>
     </tr>
 </table>
+<br><br>
+<h2>Oppgave 4</h2>
+<table id="mainTable">
+    <tr>
+        <td>Fornavn</td><td><input type="text" id="fornavn" placeholder="Fornavn"></td>
+        <td id="feilFornavn" style="color: red"></td>
+    </tr>
+    <tr>
+        <td>Adresse</td><td><input type="text" id="adresse" placeholder="Adresse"></td>
+        <td id="feilAdresse" style="color: red"></td>
+    </tr>
+    <tr>
+        <td>Tlfnummer</td><td><input type="text" id="telefonNr" placeholder="Tlfnummer"></td>
+        <td id="feilTlfnr" style="color: red"></td>
+    </tr>
+    <tr>
+        <td><button onclick="registrer();">Registrer</button></td>
+        <td><button onclick="visPersonRegister();">Vis personregister</button></td>
+    </tr>
+</table>
+<div id="personRegister"></div>
 </body>
 </html>
