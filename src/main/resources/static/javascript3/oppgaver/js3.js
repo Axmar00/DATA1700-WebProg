@@ -82,7 +82,6 @@ function validerFelt() {
 //Oppgave 4
 const personer = [];
 let ut = "";
-let ut2 = "";
 
 function registrer() {
     let fornavnOK = validerFornavn();
@@ -208,3 +207,6 @@ function validerTelefonnr() {
         return true;
     }
 }
+
+
+<!--------------------EKSTRAOPPGAVER-------------------->
