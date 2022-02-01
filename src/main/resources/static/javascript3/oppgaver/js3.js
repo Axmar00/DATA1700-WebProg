@@ -210,3 +210,21 @@ function validerTelefonnr() {
 
 
 <!--------------------EKSTRAOPPGAVER-------------------->
+
+//Oppgave 5
+function sendGjoremal() {
+    let gjoremal = $("#gjoreMal");
+    let liste = $("#gjoremalListe");
+    let ut;
+
+    if(gjoremal.val() == 0) {
+        return;
+    }
+    else {
+        ut += "<li>" +
+              "<input type='checkbox'>" + gjoremal.val() +
+              "</li>";
+        liste.append(ut);
+        gjoremal.val("");
+    }
+}
