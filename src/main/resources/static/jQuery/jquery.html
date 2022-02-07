@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>jQuery - Ukesoppgaver</title>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="jquery.js.js"></script>
+    <script src="jquery.js"></script>
     <style>
         input {
             width: 10em;
@@ -25,7 +25,7 @@
             <td>Skriv inn alder<br><input type="number" placeholder="Alder" id="inputAlder"></td>
         </tr>
         <tr>
-            <td><button onclick="visInfo()">Trykk på meg</button></td>
+            <td><button id="infoKnapp">Trykk på meg</button></td>
         </tr>
     </table>
 </div>
@@ -34,8 +34,8 @@
 <h2>Oppgave 2</h2>
 <table>
     <tr>
-        <td>Celsius:<br><input type="number" id="celsius" onchange="celsiusTilFarenheit(this.value)"></td>
-        <td>Farenheit:<br><input type="number" id="farenheit" onchange="farenheitTilCelsius(this.value)"></td>
+        <td>Celsius:<br><input type="number" id="celsius"></td>
+        <td>Farenheit:<br><input type="number" id="farenheit"></td>
     </tr>
 </table>
 <br><br>
@@ -55,10 +55,10 @@
     </tr>
     <tr>
         <td>
-            <button onclick="pluss()">+</button>
-            <button onclick="minus()">-</button>
-            <button onclick="gange()">*</button>
-            <button onclick="dele()">/</button>
+            <button id="pluss">+</button>
+            <button id="minus">-</button>
+            <button id="gange">*</button>
+            <button id="dele">/</button>
         </td>
         <td>
             <label id="feilTall" style="color: red"></label>
@@ -81,8 +81,8 @@
         <td id="feilTlfnr" style="color: red"></td>
     </tr>
     <tr>
-        <td><button onclick="registrer();">Registrer</button></td>
-        <td><button onclick="visPersonRegister();">Vis personregister</button></td>
+        <td><button id="registrer">Registrer</button></td>
+        <td><button id="visPersonRegister">Vis personregister</button></td>
     </tr>
 </table>
 <div id="personRegister"></div>

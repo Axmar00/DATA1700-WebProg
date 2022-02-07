@@ -108,11 +108,6 @@ function registrer() {
 }
 
 function visPersonRegister() {
-    //Print ut usortert array
-    printSortedArray()
-}
-
-function printSortedArray() {
     let personRegister = $("#personRegister");
     sortByName(personer);
 
