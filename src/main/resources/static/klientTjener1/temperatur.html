@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Gjennomsnittstemperatur</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript">
+        function sjekkTemp() {
+            let mnd = $("#mnd").val()
+            const url = "/hentTemp?mnd=" + mnd;
+
+            $.get(url, function(data){
+                if(data != 404) {
+                    $("#resultat").html("Gjennomsnittstemperaturen for " + mnd + " er " + data);
+                }
+                else {
+                    $("#resultat").html("Ugyldig månedsnavn");
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+<h1>Gjennomsnittstemperaturen for hver måned i Oslo</h1>
+
+Skriv inn måned: <input type="text" id="mnd">
+
+<button onclick="sjekkTemp();">Sjekk gjennomsnittstemperatur</button>
+
+<div id="resultat" style="font-weight: bold"></div>
+
+</body>
+</html>

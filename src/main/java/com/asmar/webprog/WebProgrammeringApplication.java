@@ -1,4 +1,4 @@
-package com.example.webprogrammering;
+package com.asmar.webprog;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kalkulator</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="kalkulator.js"></script>
+</head>
+<body>
+<table>
+    <tr>
+        <td>
+            Tall 1<br>
+            <input type="text" placeholder="Tall 1" id="tall1">
+        </td>
+        <td>
+            Tall 2<br>
+            <input type="text" placeholder="Tall 2" id="tall2"> :
+        </td>
+        <td><br><label id="resultat"></label></td>
+    </tr>
+    <tr>
+        <td>
+            <button onclick="pluss()">+</button>
+            <button onclick="minus()">-</button>
+            <button onclick="gange()">*</button>
+            <button onclick="dele()">/</button>
+        </td>
+        <td>
+            <label id="feilTall" style="color: red"></label>
+        </td>
+    </tr>
+</table>
+
+</body>
+</html>

@@ -1,4 +1,4 @@
-package com.example.webprogrammering;
+package com.asmar.webprog;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
