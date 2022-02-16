@@ -3,8 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <title>Motorvognregister</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="motorvognregister.js"></script>
 </head>
 <body>
+<h1>Motorvognregister</h1>
+<table>
+    <tr>
+        <td>Eiers personnummer<br><input type="number" placeholder="Personnummer" id="inputPersonNr"></td>
+        <td>Eiers navn<br><input type="text" placeholder="Navn" id="inputNavn"></td>
+        <td>Eiers adresse<br><input type="text" placeholder="Adresse" id="inputAdresse"></td>
+    </tr>
+    <tr>
+        <td>Kjennetegn<br><input type="text" placeholder="Kjennetegn" id="inputKjennetegn"></td>
+        <td>Merke<br><input type="text" placeholder="Merke" id="inputMerke"></td>
+        <td>Type<br><input type="text" placeholder="Type" id="inputType"></td>
+    </tr>
+    <tr>
+        <td><button onclick="registrer()">Registrer</button><br><br>Alle bilene:</td>
+    </tr>
+</table>
+
+<div id="bilRegister"></div>
 
 </body>
 </html>
