@@ -5,6 +5,11 @@
     <title>Motorvognregister</title>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="motorvognregister.js"></script>
+    <style>
+        td,th {
+            padding: .5em;
+        }
+    </style>
 </head>
 <body>
 <h1>Motorvognregister</h1>
@@ -25,6 +30,7 @@
 </table>
 
 <div id="bilRegister"></div>
-
+<button onclick="slettAlle()">Slett alle</button>
+<br><span style="color: red" id="feilMelding"></span>
 </body>
 </html>

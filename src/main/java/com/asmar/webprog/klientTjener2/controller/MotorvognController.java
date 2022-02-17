@@ -20,4 +20,16 @@ public class MotorvognController {
     public List<Bil> hentAlleBiler() {
         return biler;
     }
+
+    @GetMapping("/slettAlle")
+    public boolean slettAlle() {
+        if(biler.isEmpty()) {
+            System.err.println("Ingen biler registrert! Kan ikke tømme tomt array!");
+            return false;
+        }
+        else {
+            biler.clear();
+            return true;
+        }
+    }
 }
