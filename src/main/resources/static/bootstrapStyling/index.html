@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Motorvognregister</title>
+    <style>
+        label {
+            font-weight: bold;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="index.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+<h1>Motorvognregister med Bootstrap</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <form class="form">
+                    <div class="form-group">
+                        <label for="inputPersonNr">Eiers personnummer</label>
+                        <input type="number" class="form-control" id="inputPersonNr">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputNavn">Eiers navn</label>
+                        <input type="text" class="form-control" id="inputNavn">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputAdresse">Eiers adresse</label>
+                        <input type="text" class="form-control" id="inputAdresse">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputKjennetegn">Kjennetegn</label>
+                        <input type="text" class="form-control" id="inputKjennetegn">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputMerke">Merke</label>
+                        <input type="text" class="form-control" id="inputMerke">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputType">Type</label>
+                        <input type="text" class="form-control" id="inputType">
+                    </div>
+                </form>
+                <button class="btn btn-primary" onclick="registrer()">Registrer</button><br/>
+            </div>
+            <div class="col-md-8">
+                <h3>Alle bilene:</h3>
+                <div id="bilRegister"></div>
+                <button class="btn btn-danger" onclick="slettAlle()">Slett alle</button>
+                <br><span style="color: red" id="feilMelding"></span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
