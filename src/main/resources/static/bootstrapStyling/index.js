@@ -39,7 +39,7 @@ function formaterRegister(biler) {
             "</tr>";
     }
     ut += "</table>";
-    $("#bilRegister").html(ut);
+    $("#motorvognRegister").html(ut);
 }
 
 function slettAlle() {

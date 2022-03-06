@@ -1,19 +1,18 @@
-package com.asmar.webprog.klientTjener2.model;
+package com.asmar.webprog.nedtrekkslister.model;
 
-public class Bil {
-    private String personNr,navn,adresse,kjennetegn,bilMerke,bilType;
+public class Motorvogn {
+    private String personNr,navn,adresse,kjennetegn,merke,type;
 
-    public Bil(String personNr, String navn, String adresse, String kjennetegn, String bilMerke, String bilType) {
+    public Motorvogn(String personNr, String navn, String adresse, String kjennetegn, String merke, String type) {
         this.personNr = personNr;
         this.navn = navn;
         this.adresse = adresse;
         this.kjennetegn = kjennetegn;
-        this.bilMerke = bilMerke;
-        this.bilType = bilType;
+        this.merke = merke;
+        this.type = type;
     }
 
-    public Bil() {
-
+    public Motorvogn() {
     }
 
     public String getPersonNr() {
@@ -48,19 +47,19 @@ public class Bil {
         this.kjennetegn = kjennetegn;
     }
 
-    public String getBilMerke() {
-        return bilMerke;
+    public String getMerke() {
+        return merke;
     }
 
-    public void setBilMerke(String bilMerke) {
-        this.bilMerke = bilMerke;
+    public void setMerke(String merke) {
+        this.merke = merke;
     }
 
-    public String getBilType() {
-        return bilType;
+    public String getType() {
+        return type;
     }
 
-    public void setBilType(String bilType) {
-        this.bilType = bilType;
+    public void setType(String type) {
+        this.type = type;
     }
 }
