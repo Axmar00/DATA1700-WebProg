@@ -1,25 +1,38 @@
 <!--------------------INNHENTING AV BILER-------------------->
+let biler = [];
 $(function () {
     hentBiler();
 });
 
 function hentBiler() {
     $.get("/hentBiler", function(data){
+        biler = data;
         formaterBiler(data);
     });
 }
 
 function formaterBiler(biler) {
-    let ut = "<select id='valgtMerke'>";
-    let ut2 = "<select id='valgtType'>";
-    for(const bil of biler) {
-        ut += "<option value='"+bil.merke+"'>" + bil.merke + "</option>";
-        ut2 += "<option value='"+bil.type+"'>" + bil.type + "</option>"
+    // lager en ny liste med bilmerker uten duplikater
+    let unikeMerker = biler.map(bil => bil.merke).filter((merke, i, merker) => merker.indexOf(merke) === i);
+
+    let ut = "<select onclick='hentTyper()' id='valgtMerke'>";
+    for(const merke of unikeMerker) {
+        ut += "<option value='"+merke+"'>" + merke + "</option>";
     }
     ut += "</select>";
-    ut2 += "</select>";
     $("#bilMerker").html(ut);
-    $("#bilTyper").html(ut2);
+}
+
+function hentTyper() {
+    let valgtMerke = $("#valgtMerke").val();
+    const bilArray = biler.filter((bil) => bil.merke === valgtMerke);
+    let ut = "<select id='valgtType'>";
+
+    for(const bil of bilArray) {
+        ut += "<option value='"+bil.type+"'>" + bil.type + "</option>"
+    }
+    ut += "</select>";
+    $("#bilTyper").html(ut);
 }
 
 
