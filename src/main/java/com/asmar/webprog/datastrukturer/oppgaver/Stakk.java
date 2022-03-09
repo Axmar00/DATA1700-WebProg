@@ -56,22 +56,4 @@ public class Stakk {
         }
         System.out.println();
     }
-
-    public static void main(String[] args) {
-        Stakk stakk = new Stakk();
-        stakk.push(1);
-        stakk.push(2);
-        stakk.push(3);
-        stakk.push(4);
-        stakk.skrivUt();
-        System.out.println(stakk.pop());
-        stakk.skrivUt();
-        System.out.println(stakk.pop());
-        stakk.skrivUt();
-        System.out.println(stakk.pop());
-        stakk.skrivUt();
-        System.out.println(stakk.pop());
-        stakk.skrivUt();
-    }
-
 }
