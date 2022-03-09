@@ -15,6 +15,11 @@ public class LenketListe {
     private Node hode = null;
     private Node hale = null;
 
+    public LenketListe() {
+        this.hode = null;
+        this.hale = null;
+    }
+
 
     public void leggTilNode(int verdi)  {
         Node nyNode = new Node(verdi);
@@ -87,6 +92,6 @@ public class LenketListe {
         }
     }
     public static void main(String[] args) {
-        
+
     }
 }
