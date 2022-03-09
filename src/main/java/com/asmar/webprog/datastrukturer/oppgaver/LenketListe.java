@@ -27,50 +27,51 @@ public class LenketListe {
             hale.neste = nyNode;
         }
         hale = nyNode;
+        hale.neste = hode;
     }
 
     public void slettNode(int slettVerdi) {
         Node node = hode;
-        if(hode != null) {
-            // hvis listen ikke er tom
-            while (node != null) {
-                Node nesteNode = node.neste;
 
-                /*
+        // hvis listen er tom
+        if(hode == null) return;
+
+        do {
+            Node nesteNode = node.neste;
+            if(nesteNode.verdi == slettVerdi) {
                 if(hode == hale) {
-                // kun en node i listen
-                if(hode.verdi == slettVerdi) {
+                    // kun en verdi i listen
                     hode = null;
                     hale = null;
-                    return;
                 }
-                return;
+                else {
+                    // flere verdier i listen
+                    node.neste = nesteNode.neste;
+                    if(nesteNode == hode) {
+                        // hodet skal slettes
+                        hode = hode.neste;
+                    }
+                    if(nesteNode == hale) {
+                        // halen skal slettes
+                        hale = node;
+                    }
+                }
+                break;
             }
-
-                if (node.verdi == slettVerdi) {
-                    // hvis hode skal slettes
-                    hode.neste = nesteNode.neste;
-                    hode = nesteNode;
-                    break;
-                } else if (hale.verdi == slettVerdi) {
-                    // hvis hale skal slettes
-
-                }*/
-                node = nesteNode;
-
-            }
-        }
+            node = nesteNode;
+        }while (node != hode);
     }
 
     public boolean inneholderNode(int sokeVerdi) {
         Node node = hode;
         if(hode != null) {
-            while (node != null) {
+            // hvis listen ikke er tom
+            do {
                 if (node.verdi == sokeVerdi) {
                     return true;
                 }
                 node = node.neste;
-            }
+            } while (node != hode);
         }
         return false;
     }
@@ -81,19 +82,11 @@ public class LenketListe {
             do{
                 System.out.print(node.verdi + " ");
                 node = node.neste;
-            }while(node != null);
+            }while(node != hode);
             System.out.println();
         }
     }
     public static void main(String[] args) {
-        LenketListe minListe = new LenketListe();
-        minListe.leggTilNode(2);
-        minListe.leggTilNode(4);
-        minListe.leggTilNode(5);
-        minListe.leggTilNode(9);
-        minListe.leggTilNode(14);
-        minListe.skrivUtListe();
-        minListe.slettNode(2);
-        minListe.skrivUtListe();
+        
     }
 }
