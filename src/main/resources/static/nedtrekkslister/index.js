@@ -66,7 +66,7 @@ function hentMotorvogner() {
 }
 
 function formaterMotorvogner(motorvogner) {
-    let ut = "<table class='table table-striped'>" +
+    let ut = "<table class='table table-striped table-bordered'>" +
         "<tr>" +
         "<th>Personnr</th><th>Navn</th><th>Adresse</th><th>Kjennetegn</th><th>Merke</th><th>Type</th>" +
         "</tr>";

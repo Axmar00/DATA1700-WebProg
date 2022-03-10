@@ -1,4 +1,4 @@
-package com.asmar.webprog.rekursjon.oppgaver;
+package com.asmar.webprog.rekursjon;
 
 public class Rekursjon {
     // rekursiv fakultet
