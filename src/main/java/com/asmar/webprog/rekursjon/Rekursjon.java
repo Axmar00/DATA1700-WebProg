@@ -30,4 +30,9 @@ public class Rekursjon {
         }
         return sum;
     }
+
+    // binærsøk (binary search)
+    public static int binSearch(){
+        
+    }
 }
