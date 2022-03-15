@@ -32,7 +32,28 @@ public class Rekursjon {
     }
 
     // binærsøk (binary search)
-    public static int binSearch(){
-        
+    public static int binSearch(int[] liste, int nokkel, int venstre, int hoyre){
+        if (venstre <= hoyre)
+        {
+            // splitter listen i to
+            int mid = (venstre + hoyre) / 2;
+
+            if (liste[ mid ] > nokkel) {
+                // søk i venstre halvdel
+                return binSearch(liste, nokkel, venstre, mid - 1);
+            }
+            else  if (liste[ mid ] < nokkel) {
+                // søk i høyre halvdel
+                return binSearch(liste, nokkel, mid + 1, hoyre);
+            }
+            else {
+                // fant verdi!
+                return mid;
+            }
+        }
+        else {
+            // tom liste,
+            return -1;
+        }
     }
 }
