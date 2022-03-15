@@ -33,8 +33,7 @@ public class Rekursjon {
 
     // binærsøk (binary search)
     public static int binSearch(int[] liste, int nokkel, int venstre, int hoyre){
-        if (venstre <= hoyre)
-        {
+        if (venstre <= hoyre) {
             // splitter listen i to
             int mid = (venstre + hoyre) / 2;
 
