@@ -213,7 +213,7 @@ function sendGjoremal() {
     let ut;
 
     if(gjoremal.val() == 0) {
-        return;
+
     }
     else {
         ut += "<li>" +

@@ -10,7 +10,7 @@ public class MobelImpl extends Mobel {
     public String toString() {
         return getNummer() + "_" + getNavn();
     }
-    
+
     @Override
     public int compareTo(Mobel m) {
         return this.getNummer() - m.getNummer();

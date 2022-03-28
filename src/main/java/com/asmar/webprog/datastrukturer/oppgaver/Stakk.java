@@ -2,7 +2,7 @@ package com.asmar.webprog.datastrukturer.oppgaver;
 
 public class Stakk {
     private static class Node {
-        private int verdi;
+        private final int verdi;
         private Node neste;
 
         public Node(int verdi) {

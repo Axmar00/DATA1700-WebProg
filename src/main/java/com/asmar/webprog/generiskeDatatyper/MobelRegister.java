@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MobelRegister {
-    private List<Mobel> mobler;
+    private final List<Mobel> mobler;
 
     public MobelRegister() {
         mobler = new ArrayList<>();
