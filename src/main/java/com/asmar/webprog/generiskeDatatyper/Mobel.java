@@ -1,6 +1,6 @@
 package com.asmar.webprog.generiskeDatatyper;
 
-abstract public class Mobel implements Comparable {
+abstract public class Mobel implements Comparable<Mobel> {
     String navn, type;
     int vekt, pris, nummer;
 
@@ -14,9 +14,7 @@ abstract public class Mobel implements Comparable {
 
     public abstract String toString();
 
-    public int compareTo() {
-        
-    }
+    public abstract int compareTo(Mobel m);
 
     public String getNavn() {
         return navn;
