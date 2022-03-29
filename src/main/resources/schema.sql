@@ -9,3 +9,11 @@ CREATE TABLE Motorvogn
     type       VARCHAR(255) NOT NULL,
     PRIMARY KEY (id)
 );
+
+CREATE TABLE Bil
+(
+    id INTEGER AUTO_INCREMENT NOT NULL,
+    merke VARCHAR(255) NOT NULL,
+    type VARCHAR(255) NOT NULL,
+    PRIMARY KEY(id)
+);

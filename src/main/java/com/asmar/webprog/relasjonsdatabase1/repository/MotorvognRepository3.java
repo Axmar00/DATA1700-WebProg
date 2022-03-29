@@ -1,5 +1,6 @@
 package com.asmar.webprog.relasjonsdatabase1.repository;
 
+import com.asmar.webprog.relasjonsdatabase1.model.Bil;
 import com.asmar.webprog.relasjonsdatabase1.model.Motorvogn;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -34,6 +35,12 @@ public class MotorvognRepository3 {
             db.update(query);
             return true;
         }
+    }
+
+    public List<Bil> hentAlleBiler() {
+        String query = "SELECT * FROM Bil";
+        List<Bil> alleBiler = db.query(query, new BeanPropertyRowMapper(Bil.class));
+        return alleBiler;
     }
 
 }
