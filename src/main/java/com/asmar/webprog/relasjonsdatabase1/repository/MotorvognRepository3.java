@@ -23,6 +23,7 @@ public class MotorvognRepository3 {
     public List<Motorvogn> hentAlleMotorvogner() {
         String query = "SELECT * FROM Motorvogn";
         List<Motorvogn> alleMotorvogner = db.query(query, new BeanPropertyRowMapper(Motorvogn.class));
+
         return alleMotorvogner;
     }
 
@@ -35,6 +36,11 @@ public class MotorvognRepository3 {
             db.update(query);
             return true;
         }
+    }
+
+    public void slettEnMotorvogn(String id) {
+        String query = "DELETE FROM Motorvogn WHERE id=?";
+        db.update(query,id);
     }
 
     public List<Bil> hentAlleBiler() {

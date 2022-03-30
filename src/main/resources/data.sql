@@ -21,6 +21,6 @@ VALUES ('Tesla','Model X');
 INSERT INTO Bil (merke, type)
 VALUES ('Tesla','Model S');
 INSERT INTO Bil (merke, type)
-VALUES ('Tesla','Model X');
+VALUES ('Tesla','Model 3');
 
 

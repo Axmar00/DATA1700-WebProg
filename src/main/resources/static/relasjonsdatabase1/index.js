@@ -66,7 +66,7 @@ function hentMotorvogner() {
 }
 
 function formaterMotorvogner(motorvogner) {
-    let ut = "<table class='table table-striped table-bordered'>" +
+    let ut = "<table class='table table-striped'>" +
         "<tr>" +
         "<th>Personnr</th><th>Navn</th><th>Adresse</th><th>Kjennetegn</th><th>Merke</th><th>Type</th>" +
         "</tr>";
@@ -75,7 +75,9 @@ function formaterMotorvogner(motorvogner) {
         ut += "<tr>" +
             "<td>" + motorvogn.personNr + "</td>" + "<td>" + motorvogn.navn + "</td>" + "<td>" + motorvogn.adresse + "</td>" +
             "<td>" + motorvogn.kjennetegn + "</td>" + "<td>" + motorvogn.merke + "</td>" + "<td>" + motorvogn.type + "</td>" +
+            "<td> <button class='btn btn-danger' onclick='slettEnMotorvogn("+motorvogn.id+")'>Slett</button></td>" +
             "</tr>";
+        console.log(motorvogn.id);
     }
     ut += "</table>";
     $("#motorvognRegister").html(ut);
@@ -90,5 +92,12 @@ function slettMotorvogner() {
         else {
             $("#feilMelding").html("Ingen biler registert");
         }
-    })
+    });
+}
+
+function slettEnMotorvogn(id) {
+    console.log(id);
+    $.get("/slettEnMotorvogn?id=" + id, function(data){
+        hentMotorvogner();
+    });
 }
