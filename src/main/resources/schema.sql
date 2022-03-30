@@ -1,7 +1,8 @@
+DROP TABLE IF EXISTS Motorvogn;
 CREATE TABLE Motorvogn
 (
     id         INTEGER AUTO_INCREMENT NOT NULL,
-    personnr   INTEGER      NOT NULL,
+    personnr   VARCHAR(255) NOT NULL,
     navn       VARCHAR(255) NOT NULL,
     adresse    VARCHAR(255) NOT NULL,
     kjennetegn VARCHAR(255) NOT NULL,
@@ -10,6 +11,7 @@ CREATE TABLE Motorvogn
     PRIMARY KEY (id)
 );
 
+DROP TABLE IF EXISTS Bil;
 CREATE TABLE Bil
 (
     id INTEGER AUTO_INCREMENT NOT NULL,

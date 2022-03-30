@@ -38,7 +38,7 @@ public class MotorvognRepository3 {
         }
     }
 
-    public void slettEnMotorvogn(String id) {
+    public void slettEnMotorvogn(int id) {
         String query = "DELETE FROM Motorvogn WHERE id=?";
         db.update(query,id);
     }
@@ -48,5 +48,4 @@ public class MotorvognRepository3 {
         List<Bil> alleBiler = db.query(query, new BeanPropertyRowMapper(Bil.class));
         return alleBiler;
     }
-
 }

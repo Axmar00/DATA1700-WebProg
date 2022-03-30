@@ -1,9 +1,11 @@
 package com.asmar.webprog.relasjonsdatabase1.model;
 
 public class Motorvogn {
+    private int id;
     private String personNr,navn,adresse,kjennetegn,merke,type;
 
-    public Motorvogn(String personNr, String navn, String adresse, String kjennetegn, String merke, String type) {
+    public Motorvogn(int id, String personNr, String navn, String adresse, String kjennetegn, String merke, String type) {
+        this.id = id;
         this.personNr = personNr;
         this.navn = navn;
         this.adresse = adresse;
@@ -13,6 +15,14 @@ public class Motorvogn {
     }
 
     public Motorvogn() {}
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getPersonNr() {
         return personNr;

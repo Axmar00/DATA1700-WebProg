@@ -77,7 +77,6 @@ function formaterMotorvogner(motorvogner) {
             "<td>" + motorvogn.kjennetegn + "</td>" + "<td>" + motorvogn.merke + "</td>" + "<td>" + motorvogn.type + "</td>" +
             "<td> <button class='btn btn-danger' onclick='slettEnMotorvogn("+motorvogn.id+")'>Slett</button></td>" +
             "</tr>";
-        console.log(motorvogn.id);
     }
     ut += "</table>";
     $("#motorvognRegister").html(ut);
@@ -96,7 +95,6 @@ function slettMotorvogner() {
 }
 
 function slettEnMotorvogn(id) {
-    console.log(id);
     $.get("/slettEnMotorvogn?id=" + id, function(data){
         hentMotorvogner();
     });
