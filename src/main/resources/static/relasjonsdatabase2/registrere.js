@@ -9,6 +9,9 @@ function hentBiler() {
     $.get(api + "/hentBiler", function(data){
         biler = data;
         formaterBiler(data);
+    }).fail(function(jqXHR) {
+        const json = $.parseJSON(jqXHR.responseText);
+        $("#feilMelding").html(json.message);
     });
 }
 
@@ -58,6 +61,6 @@ function registrerMotorvogn() {
         window.location.href="index.html";
     }).fail(function(jqXHR) {
         const json = $.parseJSON(jqXHR.responseText);
-        console.log(json.message);
+        $("#feilMelding").html(json.message);
     });
 }

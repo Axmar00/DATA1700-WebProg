@@ -29,32 +29,56 @@ public class MotorvognController4 {
     }
 
     @GetMapping("/hentAlle")
-    public List<Motorvogn> hentAlleMotorvogner() {
-        return rep.hentAlleMotorvogner();
+    public List<Motorvogn> hentAlleMotorvogner(HttpServletResponse response) throws IOException {
+        List<Motorvogn> alleMotorvogner = rep.hentAlleMotorvogner();
+        if(alleMotorvogner == null) {
+            response.sendError(HttpStatus.INTERNAL_SERVER_ERROR.value(),
+                    "Feil i database");
+        }
+        return alleMotorvogner;
     }
 
     @GetMapping("/slettAlle")
-    public void slettAlleMotorvogner() {
-        rep.slettAlleMotorvogner();
+    public void slettAlleMotorvogner(HttpServletResponse response) throws IOException {
+        if(!rep.slettAlleMotorvogner()) {
+            response.sendError(HttpStatus.INTERNAL_SERVER_ERROR.value(),
+                    "Feil i database");
+        }
     }
 
     @GetMapping("/slettEn")
-    public void slettEnMotorvogn(int id) {
-        rep.slettEnMotorvogn(id);
+    public void slettEnMotorvogn(int id, HttpServletResponse response) throws IOException {
+        if(!rep.slettEnMotorvogn(id)) {
+            response.sendError(HttpStatus.INTERNAL_SERVER_ERROR.value(),
+                    "Feil i database");
+        }
     }
 
     @GetMapping("/hentEn")
-    public Motorvogn hentEnMotorvogn(int id) {
-        return rep.hentEnMotorvogn(id);
+    public Motorvogn hentEnMotorvogn(int id, HttpServletResponse response) throws IOException {
+        Motorvogn enMotorvogn = rep.hentEnMotorvogn(id);
+        if(enMotorvogn == null) {
+            response.sendError(HttpStatus.INTERNAL_SERVER_ERROR.value(),
+                    "Feil i database");
+        }
+        return enMotorvogn;
     }
 
     @PostMapping("/endre")
-    public void endreMotorvogn(Motorvogn innMotorvogn) {
-        rep.endreMotorvogn(innMotorvogn);
+    public void endreMotorvogn(Motorvogn innMotorvogn, HttpServletResponse response) throws IOException {
+        if(!rep.endreMotorvogn(innMotorvogn)) {
+            response.sendError(HttpStatus.INTERNAL_SERVER_ERROR.value(),
+                    "Feil i database");
+        }
     }
 
     @GetMapping("/hentBiler")
-    public List<Bil> hentBiler() {
-        return rep.hentBiler();
+    public List<Bil> hentBiler(HttpServletResponse response) throws IOException {
+        List<Bil> alleBiler = rep.hentBiler();
+        if(alleBiler == null) {
+            response.sendError(HttpStatus.INTERNAL_SERVER_ERROR.value(),
+                    "Feil i database");
+        }
+        return alleBiler;
     }
 }

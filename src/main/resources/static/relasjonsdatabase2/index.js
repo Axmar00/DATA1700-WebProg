@@ -7,6 +7,9 @@ $(function () {
 function hentMotorvogner() {
     $.get(api + "/hentAlle", function(data) {
         formaterMotorvogner(data);
+    }).fail(function(jqXHR) {
+        const json = $.parseJSON(jqXHR.responseText);
+        $("#feilMelding").html(json.message);
     });
 }
 
@@ -31,11 +34,17 @@ function formaterMotorvogner(motorvogner) {
 function slettMotorvogner() {
     $.get(api + "/slettAlle", function(data) {
             hentMotorvogner();
+    }).fail(function(jqXHR) {
+        const json = $.parseJSON(jqXHR.responseText);
+        $("#feilMelding").html(json.message);
     });
 }
 
 function slettEnMotorvogn(id) {
     $.get(api + "/slettEn?id=" + id, function(data){
         hentMotorvogner();
+    }).fail(function(jqXHR) {
+        const json = $.parseJSON(jqXHR.responseText);
+        $("#feilMelding").html(json.message);
     });
 }

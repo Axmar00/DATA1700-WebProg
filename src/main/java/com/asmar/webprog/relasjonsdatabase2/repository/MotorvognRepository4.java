@@ -32,38 +32,67 @@ public class MotorvognRepository4 {
 
     public List<Motorvogn> hentAlleMotorvogner() {
         String query = "SELECT * FROM Motorvogn4";
-        List<Motorvogn> alleMotorvogner = db.query(query, new BeanPropertyRowMapper(Motorvogn.class));
-
-        return alleMotorvogner;
+        try {
+            return db.query(query, new BeanPropertyRowMapper(Motorvogn.class));
+        } catch(Exception e) {
+            logger.error("Feil i hentAlleMotorvogner(): " + e);
+            return null;
+        }
     }
 
-    public void slettAlleMotorvogner() {
+    public boolean slettAlleMotorvogner() {
         String query = "DELETE FROM Motorvogn4";
-        db.update(query);
+        try {
+            db.update(query);
+            return true;
+        } catch(Exception e) {
+            logger.error("Feil i slettAlleMotorvogner(): " + e);
+            return false;
+        }
     }
 
-    public void slettEnMotorvogn(int id) {
+    public boolean slettEnMotorvogn(int id) {
         String query = "DELETE FROM Motorvogn4 WHERE id=?";
-        db.update(query,id);
+        try {
+            db.update(query, id);
+            return true;
+        } catch(Exception e) {
+            logger.error("Feil i slettEnMotorvogn(): " + e);
+            return false;
+        }
     }
 
     public Motorvogn hentEnMotorvogn(int id) {
         Object[] param = new Object[1];
         param[0] = id;
         String query = "SELECT * FROM Motorvogn4 WHERE id=?";
-        Motorvogn motorvogn = db.queryForObject(query, param, BeanPropertyRowMapper.newInstance(Motorvogn.class));
-        return motorvogn;
+        try {
+            return db.queryForObject(query, param, BeanPropertyRowMapper.newInstance(Motorvogn.class));
+        } catch(Exception e) {
+            logger.error("Feil i hentEnMotorvogn(): " + e);
+            return null;
+        }
     }
 
-    public void endreMotorvogn(Motorvogn innMotorvogn) {
+    public boolean endreMotorvogn(Motorvogn innMotorvogn) {
         String query = "UPDATE Motorvogn SET personNr=?,navn=?,adresse=?,kjennetegn=?,merke=?,type=?";
-        db.update(query, innMotorvogn.getPersonNr(),innMotorvogn.getNavn(),
-                innMotorvogn.getAdresse(),innMotorvogn.getKjennetegn(),innMotorvogn.getMerke(),innMotorvogn.getType());
+        try {
+            db.update(query, innMotorvogn.getPersonNr(), innMotorvogn.getNavn(),
+                    innMotorvogn.getAdresse(), innMotorvogn.getKjennetegn(), innMotorvogn.getMerke(), innMotorvogn.getType());
+            return true;
+        } catch(Exception e) {
+            logger.error("Feil i endreMotorvogn(): " + e);
+            return false;
+        }
     }
 
     public List<Bil> hentBiler() {
         String query = "SELECT * FROM Bil4";
-        List<Bil> alleBiler = db.query(query, new BeanPropertyRowMapper(Bil.class));
-        return alleBiler;
+        try {
+            return db.query(query, new BeanPropertyRowMapper(Bil.class));
+        } catch(Exception e) {
+            logger.error("Feil i hentBiler(): " + e);
+            return null;
+        }
     }
 }
