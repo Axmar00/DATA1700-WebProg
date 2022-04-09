@@ -74,11 +74,11 @@ public class MotorvognRepository4 {
         }
     }
 
-    public boolean endreMotorvogn(Motorvogn innMotorvogn) {
-        String query = "UPDATE Motorvogn SET personNr=?,navn=?,adresse=?,kjennetegn=?,merke=?,type=?";
+    public boolean endreMotorvogn(Motorvogn m) {
+        String query = "UPDATE Motorvogn4 SET personNr=?,navn=?,adresse=?,kjennetegn=?,merke=?,type=? where id=?";
         try {
-            db.update(query, innMotorvogn.getPersonNr(), innMotorvogn.getNavn(),
-                    innMotorvogn.getAdresse(), innMotorvogn.getKjennetegn(), innMotorvogn.getMerke(), innMotorvogn.getType());
+            db.update(query, m.getPersonNr(), m.getNavn(), m.getAdresse(), m.getKjennetegn(), m.getMerke(),
+                    m.getType(), m.getId());
             return true;
         } catch(Exception e) {
             logger.error("Feil i endreMotorvogn(): " + e);

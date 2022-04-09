@@ -19,12 +19,15 @@ function formaterBiler(biler) {
     // lager en ny liste med bilmerker uten duplikater
     let unikeMerker = biler.map(bil => bil.merke).filter((merke, i, merker) => merker.indexOf(merke) === i);
 
-    let ut = "<select onclick='hentTyper()' id='valgtMerke'>";
+    let ut = "<select onchange='hentTyper()' id='valgtMerke'>";
     for(const merke of unikeMerker) {
         ut += "<option value='"+merke+"'>" + merke + "</option>";
     }
     ut += "</select>";
     $("#bilMerker").html(ut);
+    $("#valgtMerke").one("click",function(){
+        hentTyper();
+    });
 }
 
 function hentTyper() {
@@ -41,20 +44,13 @@ function hentTyper() {
 
 /*--------------------MOTORVOGN-REGISTRERING--------------------*/
 function registrerMotorvogn() {
-    let personNr = $("#inputPersonNr");
-    let navn = $("#inputNavn");
-    let adresse = $("#inputAdresse");
-    let kjennetegn = $("#inputKjennetegn");
-    let merke = $("#valgtMerke");
-    let type = $("#valgtType");
-
     const motorvogn = {
-        personNr: personNr.val(),
-        navn: navn.val(),
-        adresse: adresse.val(),
-        kjennetegn: kjennetegn.val(),
-        merke: merke.val(),
-        type: type.val()
+        personNr: $("#inputPersonNr").val(),
+        navn: $("#inputNavn").val(),
+        adresse: $("#inputAdresse").val(),
+        kjennetegn: $("#inputKjennetegn").val(),
+        merke: $("#valgtMerke").val(),
+        type: $("#valgtType").val()
     };
 
     $.post(api + "/lagre", motorvogn, function() {
