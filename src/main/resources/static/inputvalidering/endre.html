@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Endre</title>
+    <style>
+        label {font-weight: bold;}
+    </style>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="endre.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="index.html">Motorvognregister</a>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link">Hjem</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <input type="hidden" id="id"/>
+            <form class="form">
+                <div class="form-group">
+                    <label for="inputPersonNr">Eiers personnummer</label>
+                    <input type="number" class="form-control" id="inputPersonNr">
+                </div>
+                <div class="form-group">
+                    <label for="inputNavn">Eiers navn</label>
+                    <input type="text" class="form-control" id="inputNavn">
+                </div>
+                <div class="form-group">
+                    <label for="inputAdresse">Eiers adresse</label>
+                    <input type="text" class="form-control" id="inputAdresse">
+                </div>
+                <div class="form-group">
+                    <label for="inputKjennetegn">Kjennetegn</label>
+                    <input type="text" class="form-control" id="inputKjennetegn">
+                </div>
+                <div class="form-group">
+                    <label for="bilMerker">Merke</label>
+                    <div id="bilMerker" class="dropdown"></div>
+                </div>
+                <div class="form-group">
+                    <label for="bilTyper">Type</label>
+                    <div id="bilTyper" class="dropdown"></div>
+                </div>
+            </form>
+            <a class="btn btn-primary" href="index.html">Tilbake</a>
+            <button class="btn btn-success" onclick="endreMotorvogn()">Lagre endring</button>
+        </div>
+    </div>
+    <div style="color: red" id="feilMelding"></div>
+</div>
+</body>
+</html>
