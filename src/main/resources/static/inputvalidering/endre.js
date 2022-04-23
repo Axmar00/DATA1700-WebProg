@@ -58,6 +58,18 @@ function hentTyper() {
     $("#bilTyper").html(ut);
 }
 
+function validerOgEndreMotorvogn() {
+    const personnrOK = validerPersonnr($("#inputPersonNr").val());
+    const navnOK = validerNavn($("#inputNavn").val());
+    const adresseOK = validerAdresse($("#inputAdresse").val());
+    const kjennetegnOK = validerKjennetegn($("#inputKjennetegn").val());
+
+    const OK = personnrOK && navnOK && adresseOK && kjennetegnOK;
+    if(OK) {
+        endreMotorvogn();
+    }
+}
+
 function endreMotorvogn() {
     const motorvogn = {
         id: $("#id").val(),

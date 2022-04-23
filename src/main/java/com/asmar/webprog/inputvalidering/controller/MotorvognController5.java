@@ -3,6 +3,8 @@ package com.asmar.webprog.inputvalidering.controller;
 import com.asmar.webprog.inputvalidering.model.Bil;
 import com.asmar.webprog.inputvalidering.model.Motorvogn;
 import com.asmar.webprog.inputvalidering.repository.MotorvognRepository5;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -17,11 +19,38 @@ public class MotorvognController5 {
     @Autowired
     MotorvognRepository5 rep;
 
+    private Logger logger = LoggerFactory.getLogger(MotorvognController5.class);
+
+    public boolean validerMotorvogn(Motorvogn innMotorvogn) {
+        String regexPersonnr = "[0-9]{11}";
+        String regexNavn = "[a-zA-ZæøåÆØÅ. \\-]{2,20}";
+        String regexAdresse = "[0-9a-zA-ZæøåÆØÅ. \\-]{2,50}";
+        String regexKjennetegn = "[A-Z][A-Z][0-9]{5}";
+        boolean personnrOK = innMotorvogn.getPersonNr().matches(regexPersonnr);
+        boolean navnOK = innMotorvogn.getNavn().matches(regexNavn);
+        boolean adresseOK = innMotorvogn.getAdresse().matches(regexAdresse);
+        boolean kjennetegnOK = innMotorvogn.getKjennetegn().matches(regexKjennetegn);
+
+        if(personnrOK && navnOK && adresseOK && kjennetegnOK) {
+            return true;
+        }
+        else {
+            logger.error("Feil i validering");
+            return false;
+        }
+    }
+
     @PostMapping("/lagre")
     public void lagreMotorvogn(Motorvogn innMotorvogn, HttpServletResponse response) throws IOException {
-        if(!rep.lagreMotorvogn(innMotorvogn)) {
+        if(!validerMotorvogn(innMotorvogn)) {
             response.sendError(HttpStatus.INTERNAL_SERVER_ERROR.value(),
-                    "Feil i database");
+                    "Valideringsfeil fra server");
+        }
+        else {
+            if (!rep.lagreMotorvogn(innMotorvogn)) {
+                response.sendError(HttpStatus.INTERNAL_SERVER_ERROR.value(),
+                        "Feil i database");
+            }
         }
     }
 
@@ -63,10 +92,17 @@ public class MotorvognController5 {
 
     @PostMapping("/endre")
     public void endreMotorvogn(Motorvogn innMotorvogn, HttpServletResponse response) throws IOException {
-        if(!rep.endreMotorvogn(innMotorvogn)) {
+        if(!validerMotorvogn(innMotorvogn)) {
             response.sendError(HttpStatus.INTERNAL_SERVER_ERROR.value(),
-                    "Feil i database");
+                    "Valideringsfeil fra server");
         }
+        else {
+            if(!rep.endreMotorvogn(innMotorvogn)) {
+                response.sendError(HttpStatus.INTERNAL_SERVER_ERROR.value(),
+                        "Feil i database");
+            }
+        }
+
     }
 
     @GetMapping("/hentBiler")

@@ -40,9 +40,23 @@ function hentTyper() {
     }
     ut += "</select>";
     $("#bilTyper").html(ut);
+    $("#regKnapp").prop("disabled",false);
+    $("#regKnapp").attr("class","btn btn-primary")
 }
 
 /*--------------------MOTORVOGN-REGISTRERING--------------------*/
+function validerOgRegistrerMotorvogn() {
+    const personnrOK = validerPersonnr($("#inputPersonNr").val());
+    const navnOK = validerNavn($("#inputNavn").val());
+    const adresseOK = validerAdresse($("#inputAdresse").val());
+    const kjennetegnOK = validerKjennetegn($("#inputKjennetegn").val());
+
+    const OK = personnrOK && navnOK && adresseOK && kjennetegnOK;
+    if(OK) {
+        registrerMotorvogn();
+    }
+}
+
 function registrerMotorvogn() {
     const motorvogn = {
         personNr: $("#inputPersonNr").val(),

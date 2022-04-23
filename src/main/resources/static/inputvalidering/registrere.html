@@ -9,6 +9,8 @@
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="registrere.js"></script>
+    <script src="validering.js"></script>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -30,19 +32,23 @@
             <form class="form">
                 <div class="form-group">
                     <label for="inputPersonNr">Eiers personnummer</label>
-                    <input type="number" class="form-control" id="inputPersonNr">
+                    <input type="number" class="form-control" id="inputPersonNr" onchange="validerPersonnr(this.value)">
+                    <span id="feilPersonnr" style="color: red"></span>
                 </div>
                 <div class="form-group">
                     <label for="inputNavn">Eiers navn</label>
-                    <input type="text" class="form-control" id="inputNavn">
+                    <input type="text" class="form-control" id="inputNavn" onchange="validerNavn(this.value)">
+                    <span id="feilNavn" style="color: red"></span>
                 </div>
                 <div class="form-group">
                     <label for="inputAdresse">Eiers adresse</label>
-                    <input type="text" class="form-control" id="inputAdresse">
+                    <input type="text" class="form-control" id="inputAdresse" onchange="validerAdresse(this.value)">
+                    <span id="feilAdresse" style="color: red"></span>
                 </div>
                 <div class="form-group">
                     <label for="inputKjennetegn">Kjennetegn</label>
-                    <input type="text" class="form-control" id="inputKjennetegn">
+                    <input type="text" class="form-control" id="inputKjennetegn" onchange="validerKjennetegn(this.value)">
+                    <span id="feilKjennetegn" style="color: red"></span>
                 </div>
                 <div class="form-group">
                     <label>Merke</label>
@@ -53,11 +59,10 @@
                     <div id="bilTyper"></div>
                 </div>
             </form>
-            <button class="btn btn-primary" onclick="registrerMotorvogn()">Registrer</button>
+            <button id="regKnapp" class="btn btn-outline-primary" disabled onclick="validerOgRegistrerMotorvogn()">Registrer</button>
         </div>
     </div>
     <div style="color: red" id="feilMelding"></div>
 </div>
-<script src="registrere.js"></script>
 </body>
 </html>
