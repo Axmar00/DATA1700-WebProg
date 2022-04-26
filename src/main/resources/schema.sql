@@ -67,3 +67,27 @@ CREATE TABLE Bil5
     type VARCHAR(255) NOT NULL,
     PRIMARY KEY(id)
 );
+
+/*--------------------MOTORVOGN6 TABELLER--------------------*/
+
+DROP TABLE IF EXISTS Motorvogn6;
+CREATE TABLE Motorvogn6
+(
+    id         INTEGER AUTO_INCREMENT NOT NULL,
+    personnr   VARCHAR(255) NOT NULL,
+    navn       VARCHAR(255) NOT NULL,
+    adresse    VARCHAR(255) NOT NULL,
+    kjennetegn VARCHAR(255) NOT NULL,
+    merke      VARCHAR(255) NOT NULL,
+    type       VARCHAR(255) NOT NULL,
+    PRIMARY KEY (id)
+);
+
+DROP TABLE IF EXISTS Bil6;
+CREATE TABLE Bil6
+(
+    id INTEGER AUTO_INCREMENT NOT NULL,
+    merke VARCHAR(255) NOT NULL,
+    type VARCHAR(255) NOT NULL,
+    PRIMARY KEY(id)
+);
