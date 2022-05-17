@@ -17,7 +17,6 @@ function hentEnMotorvogn() {
         hentTyper();
         $("#valgtType").val(data.type);
         //setTimeout(() => { $("#valgtType").val(data.type); }, 500);
-
     }).fail(function(jqXHR) {
         const json = $.parseJSON(jqXHR.responseText);
         $("#feilMelding").html(json.message);
@@ -30,7 +29,7 @@ function hentBiler() {
         formaterBiler(data);
     }).fail(function(jqXHR) {
         const json = $.parseJSON(jqXHR.responseText);
-        $("#feilMelding").html(json.message);
+        console.log(json.message);
     });
 }
 
@@ -82,7 +81,7 @@ function endreMotorvogn() {
     };
 
     $.post(api + "/endre", motorvogn, function() {
-        window.location.href="index.html";
+        window.location.href="hjem.html";
     }).fail(function(jqXHR) {
         const json = $.parseJSON(jqXHR.responseText);
         $("#feilMelding").html(json.message);

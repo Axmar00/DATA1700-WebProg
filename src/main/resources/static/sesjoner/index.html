@@ -2,24 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Motorvognregister6</title>
-    <style>
-        label {
-            font-weight: bold;
-        }
-    </style>
+    <title>Innloggging</title>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="index.js"></script>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="index.html">Motorvognregister</a>
+    <a class="navbar-brand" href="hjem.html">Motorvognregister</a>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav">
-            <li class="nav-item active">
-                <a class="nav-link" href="index.html">Hjem</a>
+            <li class="nav-item">
+                <a class="nav-link" href="hjem.html">Hjem</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="registrere.html">Registrer</a>
@@ -27,17 +21,27 @@
         </ul>
     </div>
 </nav>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8">
-                <h3>Alle bilene:</h3>
-                <div id="motorvognRegister"></div>
-                <a class="btn btn-primary" href="registrere.html">Registrere</a>
-                <button class="btn btn-danger" onclick="slettMotorvogner()">Slett alle biler</button>
-                <br><span style="color: red" id="feilMelding"></span>
-            </div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <h1>Logg inn</h1>
+            <form class="form">
+                <div class="form-group">
+                    <label for="brukernavn">Brukernavn</label>
+                    <input type="text" class="form-control" id="brukernavn"/>
+                    <span id="feilBrukernavn" style="color: red"></span>
+                </div>
+                <div class="form-group">
+                    <label for="passord">Passord</label>
+                    <input type="password" class="form-control" id="passord"/>
+                    <span id="feilPassord" style="color: red"></span>
+                </div>
+            </form>
+            <button class="btn btn-primary" onclick="loggInn()" id="loginBtn">Logg inn</button>
+            <br/>
+            <div id="feil" style="color: red"></div>
         </div>
     </div>
+</div>
 </body>
-<script src="index.js"></script>
 </html>

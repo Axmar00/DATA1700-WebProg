@@ -1,6 +1,7 @@
 package com.asmar.webprog.sesjoner.controller;
 
 import com.asmar.webprog.sesjoner.model.Bil;
+import com.asmar.webprog.sesjoner.model.Bruker;
 import com.asmar.webprog.sesjoner.model.Motorvogn;
 import com.asmar.webprog.sesjoner.repository.MotorvognRepository6;
 import org.slf4j.Logger;
@@ -10,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
@@ -17,9 +19,12 @@ import java.util.List;
 @RequestMapping("/api/sesjoner")
 public class MotorvognController6 {
     @Autowired
-    MotorvognRepository6 rep;
+    private MotorvognRepository6 rep;
 
-    private Logger logger = LoggerFactory.getLogger(MotorvognController6.class);
+    @Autowired
+    private HttpSession session;
+
+    private final Logger logger = LoggerFactory.getLogger(MotorvognController6.class);
 
     public boolean validerMotorvogn(Motorvogn innMotorvogn) {
         String regexPersonnr = "[0-9]{11}";
@@ -42,52 +47,68 @@ public class MotorvognController6 {
 
     @PostMapping("/lagre")
     public void lagreMotorvogn(Motorvogn innMotorvogn, HttpServletResponse response) throws IOException {
-        if(!validerMotorvogn(innMotorvogn)) {
-            response.sendError(HttpStatus.INTERNAL_SERVER_ERROR.value(),
-                    "Valideringsfeil fra server");
-        }
-        else {
-            if (!rep.lagreMotorvogn(innMotorvogn)) {
+        if((boolean)session.getAttribute("Innlogget")) {
+            if (!validerMotorvogn(innMotorvogn)) {
                 response.sendError(HttpStatus.INTERNAL_SERVER_ERROR.value(),
-                        "Feil i database");
+                        "Valideringsfeil fra server");
+            } else {
+                if (!rep.lagreMotorvogn(innMotorvogn)) {
+                    response.sendError(HttpStatus.INTERNAL_SERVER_ERROR.value(),
+                            "Feil i database");
+                }
             }
+        } else {
+            response.sendError(HttpStatus.INTERNAL_SERVER_ERROR.value(), "Kan ikke lagre: Du er ikke logget inn!");
         }
     }
 
     @GetMapping("/hentAlle")
     public List<Motorvogn> hentAlleMotorvogner(HttpServletResponse response) throws IOException {
         List<Motorvogn> alleMotorvogner = rep.hentAlleMotorvogner();
-        if(alleMotorvogner == null) {
+        if (alleMotorvogner == null) {
             response.sendError(HttpStatus.INTERNAL_SERVER_ERROR.value(),
                     "Feil i database");
         }
         return alleMotorvogner;
     }
 
-    @DeleteMapping("/slettAlle")
+    @GetMapping("/slettAlle")
     public void slettAlleMotorvogner(HttpServletResponse response) throws IOException {
-        if(!rep.slettAlleMotorvogner()) {
-            response.sendError(HttpStatus.INTERNAL_SERVER_ERROR.value(),
-                    "Feil i database");
+        if((boolean)session.getAttribute("Innlogget")) {
+            if (!rep.slettAlleMotorvogner()) {
+                response.sendError(HttpStatus.INTERNAL_SERVER_ERROR.value(),
+                        "Feil i database");
+            }
+        } else {
+            response.sendError(HttpStatus.INTERNAL_SERVER_ERROR.value(), "Kan ikke slette: Du er ikke logget inn!");
         }
     }
 
     @GetMapping("/slettEn")
     public void slettEnMotorvogn(int id, HttpServletResponse response) throws IOException {
-        if(!rep.slettEnMotorvogn(id)) {
-            response.sendError(HttpStatus.INTERNAL_SERVER_ERROR.value(),
-                    "Feil i database");
+        if((boolean)session.getAttribute("Innlogget")) {
+            if(!rep.slettEnMotorvogn(id)) {
+                response.sendError(HttpStatus.INTERNAL_SERVER_ERROR.value(),
+                        "Feil i database");
+            }
+        } else {
+            response.sendError(HttpStatus.INTERNAL_SERVER_ERROR.value(), "Kan ikke slette: Du er ikke logget inn!");
         }
     }
 
     @GetMapping("/hentEn")
     public Motorvogn hentEnMotorvogn(int id, HttpServletResponse response) throws IOException {
-        Motorvogn enMotorvogn = rep.hentEnMotorvogn(id);
-        if(enMotorvogn == null) {
-            response.sendError(HttpStatus.INTERNAL_SERVER_ERROR.value(),
-                    "Feil i database");
+        if((boolean)session.getAttribute("Innlogget")) {
+            Motorvogn enMotorvogn = rep.hentEnMotorvogn(id);
+            if (enMotorvogn == null) {
+                response.sendError(HttpStatus.INTERNAL_SERVER_ERROR.value(),
+                        "Feil i database");
+            }
+            return enMotorvogn;
+        } else {
+            response.sendError(HttpStatus.INTERNAL_SERVER_ERROR.value(), "Kan ikke slette: Du er ikke logget inn!");
+            return null;
         }
-        return enMotorvogn;
     }
 
     @PostMapping("/endre")
@@ -102,16 +123,34 @@ public class MotorvognController6 {
                         "Feil i database");
             }
         }
-
     }
 
     @GetMapping("/hentBiler")
     public List<Bil> hentBiler(HttpServletResponse response) throws IOException {
-        List<Bil> alleBiler = rep.hentBiler();
-        if(alleBiler == null) {
-            response.sendError(HttpStatus.INTERNAL_SERVER_ERROR.value(),
-                    "Feil i database");
+        if((boolean)session.getAttribute("Innlogget")) {
+            List<Bil> alleBiler = rep.hentBiler();
+            if (alleBiler == null) {
+                response.sendError(HttpStatus.INTERNAL_SERVER_ERROR.value(),
+                        "Feil i database");
+            }
+            return alleBiler;
+        } else {
+            response.sendError(HttpStatus.INTERNAL_SERVER_ERROR.value(), "Kan ikke hente biler: Du er ikke logget inn!");
+            return null;
         }
-        return alleBiler;
+    }
+
+    @GetMapping("/loggInn")
+    public boolean loggInn(Bruker innBruker) {
+        if(rep.sjekkBruker(innBruker)) {
+            session.setAttribute("Innlogget",true);
+            return true;
+        }
+        return false;
+    }
+
+    @GetMapping("/loggUt")
+    public void loggUt() {
+        session.setAttribute("Innlogget", false);
     }
 }

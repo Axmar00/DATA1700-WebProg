@@ -121,3 +121,6 @@ INSERT INTO Bil6 (merke, type)
 VALUES ('Tesla','Model S');
 INSERT INTO Bil6 (merke, type)
 VALUES ('Tesla','Model 3');
+
+INSERT INTO Bruker6 (brukernavn, passord)
+VALUES ('Sudo','Sudo321');

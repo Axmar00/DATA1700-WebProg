@@ -1,6 +1,7 @@
 package com.asmar.webprog.sesjoner.repository;
 
 import com.asmar.webprog.sesjoner.model.Bil;
+import com.asmar.webprog.sesjoner.model.Bruker;
 import com.asmar.webprog.sesjoner.model.Motorvogn;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -93,6 +94,22 @@ public class MotorvognRepository6 {
         } catch(Exception e) {
             logger.error("Feil i hentBiler(): " + e);
             return null;
+        }
+    }
+
+    public boolean sjekkBruker(Bruker innBruker) {
+        Object[] param = new Object[]{innBruker.getBrukernavn(),innBruker.getPassord()};
+        String sql = "SELECT COUNT(*) FROM Bruker6 WHERE brukernavn=? AND passord=?";
+        try{
+            int antall = db.queryForObject(sql,param,Integer.class);
+            if (antall > 0){
+                return true;
+            }
+            return false;
+        }
+        catch (Exception e){
+            logger.error("Feil i sjekkBruker : "+ e);
+            return false;
         }
     }
 }

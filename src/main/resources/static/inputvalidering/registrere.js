@@ -68,7 +68,7 @@ function registrerMotorvogn() {
     };
 
     $.post(api + "/lagre", motorvogn, function() {
-        window.location.href="index.html";
+        window.location.href="hjem.html";
     }).fail(function(jqXHR) {
         const json = $.parseJSON(jqXHR.responseText);
         $("#feilMelding").html(json.message);
