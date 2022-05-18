@@ -70,7 +70,7 @@ function endreMotorvogn() {
     };
 
     $.post(api + "/endre", motorvogn, function() {
-        window.location.href="hjem.html";
+        window.location.href="index.html";
     }).fail(function(jqXHR) {
         const json = $.parseJSON(jqXHR.responseText);
         $("#feilMelding").html(json.message);
